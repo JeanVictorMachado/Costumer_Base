@@ -27,16 +27,3 @@ export const Content = styled.div`
     background-color: ${theme.colors.secondary};
   `}
 `;
-
-export const Form = styled.div`
-  ${() => css`
-    width: 900px;
-
-    padding: 20px 20px 0 20px;
-
-    > div {
-      display: flex;
-      justify-content: space-between;
-    }
-  `}
-`;
