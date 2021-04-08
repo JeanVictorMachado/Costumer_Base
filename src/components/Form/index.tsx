@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -8,6 +9,7 @@ import { validateForm } from '../../utils/validateForm';
 import { FiMail } from 'react-icons/fi';
 
 import * as S from './styles';
+import { date } from 'yup';
 
 const Form: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -21,10 +23,12 @@ const Form: React.FC = () => {
   const [district, setDistrict] = useState<string>('');
   const [city, setCity] = useState<string>('');
 
+  const { stateEmail } = useContext(GlobalContext);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    validateForm({
+    const errorMessage = validateForm({
       name,
       lastName,
       email,
@@ -36,13 +40,28 @@ const Form: React.FC = () => {
       district,
       city,
     });
+
+    setName('');
+    setLastName('');
+    setEmail('');
+    setPhone('');
+    setCpf('');
+    setBirth('');
+    setAddress('');
+    setNumber('');
+    setDistrict('');
+    setCity('');
+
+    return errorMessage;
   };
 
   return (
-    <S.Form onSubmit={event => handleSubmit(event)}>
+    <S.Form onSubmit={e => handleSubmit(e)}>
       <div>
         <Input
           type="text"
+          name="name"
+          value={name}
           placeholder="Nome"
           Icon={FiMail}
           width="420px"
@@ -50,6 +69,8 @@ const Form: React.FC = () => {
         />
         <Input
           type="text"
+          name="lastName"
+          value={lastName}
           placeholder="Sobrenome"
           Icon={FiMail}
           width="420px"
@@ -59,13 +80,18 @@ const Form: React.FC = () => {
       <div>
         <Input
           type="email"
+          name="email"
+          value={email}
           placeholder="Email"
           Icon={FiMail}
           width="420px"
           onChange={({ target: { value } }) => setEmail(value)}
         />
+        <p>{stateEmail}</p>
         <Input
           type="phone"
+          name="phone"
+          value={phone}
           placeholder="Telefone"
           Icon={FiMail}
           width="420px"
@@ -75,6 +101,8 @@ const Form: React.FC = () => {
       <div>
         <Input
           type="text"
+          name="cpf"
+          value={cpf}
           placeholder="CPF"
           Icon={FiMail}
           width="420px"
@@ -83,6 +111,8 @@ const Form: React.FC = () => {
         <Input
           id="date"
           type="date"
+          name="date"
+          value={birth}
           placeholder="Data de nascimento"
           Icon={FiMail}
           width="420px"
@@ -92,6 +122,8 @@ const Form: React.FC = () => {
       <div>
         <Input
           type="textarea"
+          name="address"
+          value={address}
           placeholder="Endereço"
           Icon={FiMail}
           width="690px"
@@ -100,6 +132,8 @@ const Form: React.FC = () => {
         <Input
           id="number"
           type="number"
+          name="number"
+          value={number}
           placeholder="Numero"
           Icon={FiMail}
           width="150px"
@@ -109,6 +143,8 @@ const Form: React.FC = () => {
       <div>
         <Input
           type="text"
+          name="district"
+          value={district}
           placeholder="Bairro"
           Icon={FiMail}
           width="420px"
@@ -116,6 +152,8 @@ const Form: React.FC = () => {
         />
         <Input
           type="text"
+          name="city"
+          value={city}
           placeholder="Cidade - UF"
           Icon={FiMail}
           width="420px"

@@ -1,5 +1,4 @@
-import React, { PropsWithChildren } from 'react';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
+import React from 'react';
 
 import * as S from './styles';
 
@@ -7,22 +6,19 @@ type InputProps = {
   id?: string;
   name?: string;
   type?: string;
+  value?: string;
   placeholder?: string;
   required?: boolean;
   Icon?: any;
   width?: string;
-  // ref?: HTMLInputElement | null;
-  register?:
-    | ((instance: HTMLInputElement | null) => void)
-    | React.RefObject<HTMLInputElement>
-    | null
-    | undefined;
+  register?: any;
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
 };
 
 const Input: React.FC<InputProps> = ({
   id,
   name,
+  value,
   type = 'text',
   placeholder = 'Name',
   required = false,
@@ -38,6 +34,7 @@ const Input: React.FC<InputProps> = ({
         ref={register}
         type={type}
         name={name}
+        value={value}
         placeholder={placeholder}
         required={required}
         onChange={onChange}

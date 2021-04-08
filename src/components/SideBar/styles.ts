@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
     width: 300px;
     height: 100vh;
 
+    padding-top: 70px;
+
     top: 0;
     bottom: 0;
     left: 0;
@@ -17,8 +19,25 @@ export const Wrapper = styled.div`
 
     border-right: 5px solid ${theme.colors.info};
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    > div {
+      height: 50px;
+
+      border-bottom: 2px solid ${theme.colors.tertiary};
+
+      font-size: 20px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: ${theme.colors.tertiary};
+      }
+    }
   `}
 `;

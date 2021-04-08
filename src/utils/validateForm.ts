@@ -22,12 +22,14 @@ export const validateForm = ({
   number,
   district,
   city,
-}: validateFormProps): void => {
-  localStorage.setItem(
-    '@clients',
-    JSON.stringify([
-      {
-        client: {
+}: validateFormProps): any => {
+  const clients = JSON.parse(<string>localStorage.getItem('@clients'));
+
+  if (!clients) {
+    localStorage.setItem(
+      '@clients',
+      JSON.stringify([
+        {
           name,
           lastName,
           email,
@@ -39,9 +41,28 @@ export const validateForm = ({
           district,
           city,
         },
-      },
-    ]),
-  );
+      ]),
+    );
+  } else {
+    localStorage.setItem(
+      '@clients',
+      JSON.stringify([
+        ...clients,
+        {
+          name,
+          lastName,
+          email,
+          phone,
+          cpf,
+          birth,
+          address,
+          number,
+          district,
+          city,
+        },
+      ]),
+    );
+  }
 
   return alert('Cliente cadastrado com sucesso!');
 };

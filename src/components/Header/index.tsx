@@ -7,8 +7,10 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     switch (window.location.pathname) {
-      case '/admin':
+      case '/register':
         return setPathName('Cadastro');
+      case '/customers':
+        return setPathName('Clientes');
       default:
         return;
     }
