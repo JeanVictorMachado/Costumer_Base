@@ -161,20 +161,20 @@ const Form: React.FC = () => {
       </div>
       <div>
         <Input
-          id="address"
+          id=""
           type="textarea"
-          name="address"
-          value={address}
+          name=""
+          value=""
           placeholder="Endereço 2"
           Icon={FaRegAddressBook}
           width="690px"
           required={true}
         />
         <Input
-          id="number"
+          id=""
           type="number"
-          name="number"
-          value={number}
+          name=""
+          value=""
           placeholder="Numero"
           Icon={AiOutlineFieldNumber}
           width="150px"
