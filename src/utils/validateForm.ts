@@ -30,6 +30,8 @@ export const validateForm = ({
       client.cpf.includes(cpf),
     );
 
+    console.log(cpfExist)
+
     if (cpfExist.length !== 0) {
       return alert('Ja existe um cliente com esse cpf!');
     }

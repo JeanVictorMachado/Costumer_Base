@@ -161,24 +161,22 @@ const Form: React.FC = () => {
       </div>
       <div>
         <Input
-          id=""
+          id="address"
           type="textarea"
           name=""
           value=""
           placeholder="Endereço 2"
           Icon={FaRegAddressBook}
           width="690px"
-          required={true}
         />
         <Input
-          id=""
+          id="number"
           type="number"
           name=""
           value=""
           placeholder="Numero"
           Icon={AiOutlineFieldNumber}
           width="150px"
-          required={true}
         />
       </div>
       <div>

@@ -29,8 +29,6 @@ export const updateForm = ({
     (client: { cpf: string }) => client.cpf !== cpf,
   );
 
-  console.log(filterClients);
-
   localStorage.setItem(
     '@clients',
     JSON.stringify([...clientUpdate, ...filterClients]),
