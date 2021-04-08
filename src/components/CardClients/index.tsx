@@ -3,23 +3,34 @@ import React from 'react';
 import * as S from './styles';
 
 type CardClientsProps = {
+  index: number;
+  handleDeleteCustomer?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   client: {
-    index: number;
     name: string;
     cpf: number;
   };
 };
 
-const CardClients: React.FC<CardClientsProps> = ({ client }) => {
+const CardClients: React.FC<CardClientsProps> = ({
+  client,
+  index,
+  handleDeleteCustomer,
+}) => {
   return (
     <S.Wrapper>
       <S.Informations>
-        <div>1</div>
-        <span>Jean Machado</span>
-        <span>075.890.439-82</span>
+        <div>{index + 1}</div>
+        <span>{client.name}</span>
+        <span>{client.cpf}</span>
       </S.Informations>
 
-      <S.ClearButton>X</S.ClearButton>
+      <S.ClearButton
+        type="button"
+        id={client.cpf.toString()}
+        onClick={handleDeleteCustomer}
+      >
+        X
+      </S.ClearButton>
     </S.Wrapper>
   );
 };

@@ -38,6 +38,16 @@ export const Wrapper = styled.div`
       &:hover {
         background-color: ${theme.colors.tertiary};
       }
+
+      > input {
+        height: 30px;
+        padding-left: 10px;
+
+        border-radius: 3px;
+        border: 1px solid ${theme.colors.tertiary};
+
+        background-color: ${theme.colors.secondary};
+      }
     }
   `}
 `;

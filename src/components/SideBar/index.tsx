@@ -3,11 +3,20 @@ import { useHistory } from 'react-router-dom';
 
 import * as S from './styles';
 
-const SideBar: React.FC = () => {
+type SideBarProps = {
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+};
+
+const SideBar: React.FC<SideBarProps> = ({ onChange }) => {
   const history = useHistory();
 
   return (
     <S.Wrapper>
+      {window.location.pathname === '/customers' && (
+        <div>
+          <input onChange={onChange} type="text" placeholder="Pesquisar" />
+        </div>
+      )}
       <div onClick={() => history.push('/customers')}>
         <span>Clientes</span>
       </div>
