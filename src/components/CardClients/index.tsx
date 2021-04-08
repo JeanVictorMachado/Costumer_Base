@@ -24,7 +24,7 @@ const CardClients: React.FC<CardClientsProps> = ({
       <S.Informations onClick={() => history.push(`/customers/${client.cpf}`)}>
         <div>{index + 1}</div>
         <span>{client.name}</span>
-        <span>{client.cpf}</span>
+        <span>{`CPF: ${client.cpf}`}</span>
       </S.Informations>
 
       <S.ClearButton

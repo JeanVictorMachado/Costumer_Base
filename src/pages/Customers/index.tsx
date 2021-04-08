@@ -36,6 +36,8 @@ const Customers: React.FC = () => {
     const clients = searchCurtomers();
 
     setClients(clients);
+
+    alert('Click no card para poder ver os detalhes do cliente!');
   }, []);
 
   return (

@@ -45,7 +45,6 @@ const CardDetails: React.FC = () => {
 
   useEffect(() => {
     const clients = searchCurtomers();
-
     setCpf(Cpf);
 
     const client = clients.filter((client: { cpf: string }) =>
@@ -53,6 +52,8 @@ const CardDetails: React.FC = () => {
     );
 
     setClientDetails(client[0]);
+
+    alert('Clicando em Atualizar você poderá editar os dados do cliente!');
   }, [Cpf]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
