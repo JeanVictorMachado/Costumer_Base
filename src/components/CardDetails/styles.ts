@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   ${({ theme }) => css`
     width: 900px;
     height: 500px;

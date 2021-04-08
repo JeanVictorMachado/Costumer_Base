@@ -25,12 +25,14 @@ export const validateForm = ({
 }: validateFormProps): any => {
   const clients = JSON.parse(<string>localStorage.getItem('@clients'));
 
-  const cpfExist = clients.filter((client: { cpf: string }) =>
-    client.cpf.includes(cpf),
-  );
+  if (clients) {
+    const cpfExist = clients.filter((client: { cpf: string }) =>
+      client.cpf.includes(cpf),
+    );
 
-  if (cpfExist.length !== 0) {
-    return alert('Ja existe um usuário com esse cpf!');
+    if (cpfExist.length !== 0) {
+      return alert('Ja existe um usuário com esse cpf!');
+    }
   }
 
   if (!clients) {

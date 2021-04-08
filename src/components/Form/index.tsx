@@ -9,7 +9,6 @@ import { validateForm } from '../../utils/validateForm';
 import { FiMail } from 'react-icons/fi';
 
 import * as S from './styles';
-import { date } from 'yup';
 
 const Form: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -28,7 +27,7 @@ const Form: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const errorMessage = validateForm({
+    const createdClient = validateForm({
       name,
       lastName,
       email,
@@ -52,7 +51,7 @@ const Form: React.FC = () => {
     setDistrict('');
     setCity('');
 
-    return errorMessage;
+    return createdClient;
   };
 
   return (
@@ -65,6 +64,7 @@ const Form: React.FC = () => {
           placeholder="Nome"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setName(value)}
         />
         <Input
@@ -74,6 +74,7 @@ const Form: React.FC = () => {
           placeholder="Sobrenome"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setLastName(value)}
         />
       </div>
@@ -85,6 +86,7 @@ const Form: React.FC = () => {
           placeholder="Email"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setEmail(value)}
         />
         <p>{stateEmail}</p>
@@ -95,6 +97,7 @@ const Form: React.FC = () => {
           placeholder="Telefone"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setPhone(value)}
         />
       </div>
@@ -106,6 +109,7 @@ const Form: React.FC = () => {
           placeholder="CPF"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setCpf(value)}
         />
         <Input
@@ -116,6 +120,7 @@ const Form: React.FC = () => {
           placeholder="Data de nascimento"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setBirth(value)}
         />
       </div>
@@ -127,6 +132,7 @@ const Form: React.FC = () => {
           placeholder="Endereço"
           Icon={FiMail}
           width="690px"
+          required={true}
           onChange={({ target: { value } }) => setAddress(value)}
         />
         <Input
@@ -137,27 +143,7 @@ const Form: React.FC = () => {
           placeholder="Numero"
           Icon={FiMail}
           width="150px"
-          onChange={({ target: { value } }) => setNumber(value)}
-        />
-      </div>
-      <div>
-        <Input
-          type="textarea"
-          name="address"
-          value={address}
-          placeholder="Endereço 2"
-          Icon={FiMail}
-          width="690px"
-          onChange={({ target: { value } }) => setAddress(value)}
-        />
-        <Input
-          id="number"
-          type="number"
-          name="number"
-          value={number}
-          placeholder="Numero"
-          Icon={FiMail}
-          width="150px"
+          required={true}
           onChange={({ target: { value } }) => setNumber(value)}
         />
       </div>
@@ -169,6 +155,7 @@ const Form: React.FC = () => {
           placeholder="Bairro"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setDistrict(value)}
         />
         <Input
@@ -178,6 +165,7 @@ const Form: React.FC = () => {
           placeholder="Cidade - UF"
           Icon={FiMail}
           width="420px"
+          required={true}
           onChange={({ target: { value } }) => setCity(value)}
         />
       </div>

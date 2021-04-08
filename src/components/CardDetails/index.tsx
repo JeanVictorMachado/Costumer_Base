@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FiMail } from 'react-icons/fi';
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 import { searchCurtomers } from '../../utils/searchCustomers';
+import { updateForm } from '../../utils/updateForm';
 
 import Input from '../Input';
+import Buttom from '../Button';
 
 import * as S from './styles';
 
@@ -22,22 +25,49 @@ type ArrayClientProps = {
 
 const CardDetails: React.FC = () => {
   const [clientDetails, setClientDetails] = useState<ArrayClientProps>();
-  const [readOnly, setReadOnly] = useState<boolean>(false);
 
-  const [, _path, cpf] = window.location.pathname.split('/');
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [cpf, setCpf] = useState<string>('');
+  const [address, setAddress] = useState<string>('');
+  const [number, setNumber] = useState<string>('');
+  const [district, setDistrict] = useState<string>('');
+  const [city, setCity] = useState<string>('');
+
+  const { stateUpdate } = useContext(GlobalContext);
+
+  const [, , Cpf] = window.location.pathname.split('/');
 
   useEffect(() => {
     const clients = searchCurtomers();
 
+    setCpf(Cpf);
+
     const client = clients.filter((client: { cpf: string }) =>
-      client.cpf.includes(cpf),
+      client.cpf.includes(Cpf),
     );
 
     setClientDetails(client[0]);
   }, []);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const updatedClient = updateForm({
+      email,
+      phone,
+      cpf,
+      address,
+      number,
+      district,
+      city,
+    });
+
+    return updatedClient;
+  };
+
   return (
-    <S.Wrapper>
+    <S.Form onSubmit={e => handleSubmit(e)}>
       <div>
         <div>
           <h2>{`${clientDetails?.name} ${clientDetails?.lastName}`}</h2>
@@ -48,64 +78,70 @@ const CardDetails: React.FC = () => {
         <Input
           type="text"
           name="email"
-          value={clientDetails?.email}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.email}
+          placeholder="Email"
           Icon={FiMail}
           width="420px"
-          readOnly={readOnly}
+          onChange={({ target: { value } }) => setEmail(value)}
         />
         <Input
           type="text"
           name="phone"
-          value={clientDetails?.phone}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.phone}
+          placeholder="Telefone"
           Icon={FiMail}
           width="420px"
-          readOnly={readOnly}
+          readOnly={!stateUpdate}
+          onChange={({ target: { value } }) => setPhone(value)}
         />
       </div>
       <div>
         <Input
           type="textarea"
           name="address"
-          value={clientDetails?.address}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.address}
+          placeholder="Endereço"
           Icon={FiMail}
           width="690px"
-          readOnly={readOnly}
+          readOnly={!stateUpdate}
+          onChange={({ target: { value } }) => setAddress(value)}
         />
         <Input
           id="number"
           type="text"
           name="number"
-          value={clientDetails?.number}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.number}
+          placeholder="Numero"
           Icon={FiMail}
           width="150px"
-          readOnly={readOnly}
+          readOnly={!stateUpdate}
+          onChange={({ target: { value } }) => setNumber(value)}
         />
       </div>
       <div>
         <Input
           type="text"
           name="district"
-          value={clientDetails?.district}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.district}
+          placeholder="Bairro"
           Icon={FiMail}
           width="420px"
-          readOnly={readOnly}
+          readOnly={!stateUpdate}
+          onChange={({ target: { value } }) => setDistrict(value)}
         />
         <Input
           type="text"
           name="name"
-          value={clientDetails?.city}
-          placeholder=""
+          value={stateUpdate ? undefined : clientDetails?.city}
+          placeholder="Cidade - UF"
           Icon={FiMail}
           width="420px"
-          readOnly={readOnly}
+          readOnly={!stateUpdate}
+          onChange={({ target: { value } }) => setCity(value)}
         />
       </div>
-    </S.Wrapper>
+      {stateUpdate && <Buttom type="submit">Atualizar</Buttom>}
+    </S.Form>
   );
 };
 
