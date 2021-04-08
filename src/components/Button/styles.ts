@@ -1,18 +1,17 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
   ${({ theme }) => css`
     width: 100%;
-    height: 70px;
+    height: 35px;
 
-    z-index: 1;
+    font-size: 16px;
 
-    position: fixed;
+    border-radius: 3px;
+    box-shadow: 0 0 5px ${theme.colors.tertiary};
 
-    background-color: ${theme.colors.primary};
+    background-color: #f6c208;
     color: ${theme.colors.text};
-
-    border-bottom: 5px solid ${theme.colors.info};
 
     display: flex;
     align-items: center;

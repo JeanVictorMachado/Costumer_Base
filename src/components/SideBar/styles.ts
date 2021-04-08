@@ -2,17 +2,20 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    width: 100%;
-    height: 70px;
+    width: 300px;
+    height: 100vh;
 
-    z-index: 1;
-
-    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    /* position: fixed; */
 
     background-color: ${theme.colors.primary};
     color: ${theme.colors.text};
 
-    border-bottom: 5px solid ${theme.colors.info};
+    border-right: 5px solid ${theme.colors.info};
 
     display: flex;
     align-items: center;
