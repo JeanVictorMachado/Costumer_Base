@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import * as S from './styles';
 
@@ -16,9 +17,11 @@ const CardClients: React.FC<CardClientsProps> = ({
   index,
   handleDeleteCustomer,
 }) => {
+  const history = useHistory();
+
   return (
     <S.Wrapper>
-      <S.Informations>
+      <S.Informations onClick={() => history.push(`/customers/${client.cpf}`)}>
         <div>{index + 1}</div>
         <span>{client.name}</span>
         <span>{client.cpf}</span>

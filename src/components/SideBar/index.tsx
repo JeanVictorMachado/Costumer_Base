@@ -13,9 +13,9 @@ const SideBar: React.FC<SideBarProps> = ({ onChange }) => {
   return (
     <S.Wrapper>
       {window.location.pathname === '/customers' && (
-        <div>
+        <span>
           <input onChange={onChange} type="text" placeholder="Pesquisar" />
-        </div>
+        </span>
       )}
       <div onClick={() => history.push('/customers')}>
         <span>Clientes</span>

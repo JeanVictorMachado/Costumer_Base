@@ -38,6 +38,23 @@ export const Wrapper = styled.div`
       &:hover {
         background-color: ${theme.colors.tertiary};
       }
+    }
+
+    > span {
+      height: 50px;
+
+      border-bottom: 2px solid ${theme.colors.tertiary};
+
+      font-size: 20px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: background-color 0.3s;
 
       > input {
         height: 30px;

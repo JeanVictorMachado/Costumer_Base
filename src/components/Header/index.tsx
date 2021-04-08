@@ -12,7 +12,7 @@ const Login: React.FC = () => {
       case '/customers':
         return setPathName('Clientes');
       default:
-        return;
+        return setPathName('Detalhes do cliente');
     }
   }, []);
 

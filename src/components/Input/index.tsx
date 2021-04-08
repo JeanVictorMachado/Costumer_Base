@@ -12,6 +12,7 @@ type InputProps = {
   Icon?: any;
   width?: string;
   register?: any;
+  readOnly?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
 };
 
@@ -25,6 +26,7 @@ const Input: React.FC<InputProps> = ({
   Icon,
   width = '100%',
   register,
+  readOnly,
   onChange,
 }) => {
   return (
@@ -37,6 +39,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         placeholder={placeholder}
         required={required}
+        readOnly={readOnly}
         onChange={onChange}
       />
     </S.Wrapper>

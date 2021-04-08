@@ -142,6 +142,27 @@ const Form: React.FC = () => {
       </div>
       <div>
         <Input
+          type="textarea"
+          name="address"
+          value={address}
+          placeholder="Endereço 2"
+          Icon={FiMail}
+          width="690px"
+          onChange={({ target: { value } }) => setAddress(value)}
+        />
+        <Input
+          id="number"
+          type="number"
+          name="number"
+          value={number}
+          placeholder="Numero"
+          Icon={FiMail}
+          width="150px"
+          onChange={({ target: { value } }) => setNumber(value)}
+        />
+      </div>
+      <div>
+        <Input
           type="text"
           name="district"
           value={district}
