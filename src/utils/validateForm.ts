@@ -31,7 +31,7 @@ export const validateForm = ({
     );
 
     if (cpfExist.length !== 0) {
-      return alert('Ja existe um usuário com esse cpf!');
+      return alert('Ja existe um cliente com esse cpf!');
     }
   }
 

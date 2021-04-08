@@ -15,6 +15,22 @@ export const Wrapper = styled.div`
     display: flex;
 
     background-color: ${theme.colors.primary};
+
+    cursor: pointer;
+
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+
+    @media (max-width: 1200px) {
+      width: 600px;
+    }
+
+    @media (max-width: 900px) {
+      width: 500px;
+    }
   `}
 `;
 
@@ -72,5 +88,11 @@ export const ClearButton = styled.button`
     justify-content: center;
 
     background-color: ${theme.colors.tertiary};
+
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #d48206;
+    }
   `}
 `;

@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FiMail } from 'react-icons/fi';
 import { GlobalContext } from '../../contexts/GlobalContext';
 
 import { searchCurtomers } from '../../utils/searchCustomers';
 import { updateForm } from '../../utils/updateForm';
+
+import { FiMail } from 'react-icons/fi';
+import { BiPhoneCall } from 'react-icons/bi';
+import { AiOutlineFieldNumber } from 'react-icons/ai';
+import { FaRegAddressBook } from 'react-icons/fa';
+import { FaBirthdayCake } from 'react-icons/fa';
 
 import Input from '../Input';
 import Buttom from '../Button';
@@ -48,7 +53,7 @@ const CardDetails: React.FC = () => {
     );
 
     setClientDetails(client[0]);
-  }, []);
+  }, [Cpf]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -73,9 +78,14 @@ const CardDetails: React.FC = () => {
           <h2>{`${clientDetails?.name} ${clientDetails?.lastName}`}</h2>
         </div>
         <span>{`CPF: ${clientDetails?.cpf}`}</span>
+        <div id="container-date">
+          <FaBirthdayCake />
+          {clientDetails?.birth}
+        </div>
       </div>
       <div>
         <Input
+          id="email"
           type="text"
           name="email"
           value={stateUpdate ? undefined : clientDetails?.email}
@@ -85,11 +95,12 @@ const CardDetails: React.FC = () => {
           onChange={({ target: { value } }) => setEmail(value)}
         />
         <Input
+          id="phone"
           type="text"
           name="phone"
           value={stateUpdate ? undefined : clientDetails?.phone}
           placeholder="Telefone"
-          Icon={FiMail}
+          Icon={BiPhoneCall}
           width="420px"
           readOnly={!stateUpdate}
           onChange={({ target: { value } }) => setPhone(value)}
@@ -97,11 +108,12 @@ const CardDetails: React.FC = () => {
       </div>
       <div>
         <Input
+          id="address"
           type="textarea"
           name="address"
           value={stateUpdate ? undefined : clientDetails?.address}
           placeholder="Endereço"
-          Icon={FiMail}
+          Icon={FaRegAddressBook}
           width="690px"
           readOnly={!stateUpdate}
           onChange={({ target: { value } }) => setAddress(value)}
@@ -112,7 +124,7 @@ const CardDetails: React.FC = () => {
           name="number"
           value={stateUpdate ? undefined : clientDetails?.number}
           placeholder="Numero"
-          Icon={FiMail}
+          Icon={AiOutlineFieldNumber}
           width="150px"
           readOnly={!stateUpdate}
           onChange={({ target: { value } }) => setNumber(value)}
@@ -120,21 +132,23 @@ const CardDetails: React.FC = () => {
       </div>
       <div>
         <Input
+          id="district"
           type="text"
           name="district"
           value={stateUpdate ? undefined : clientDetails?.district}
           placeholder="Bairro"
-          Icon={FiMail}
+          Icon={FaRegAddressBook}
           width="420px"
           readOnly={!stateUpdate}
           onChange={({ target: { value } }) => setDistrict(value)}
         />
         <Input
+          id="city"
           type="text"
           name="name"
           value={stateUpdate ? undefined : clientDetails?.city}
           placeholder="Cidade - UF"
-          Icon={FiMail}
+          Icon={FaRegAddressBook}
           width="420px"
           readOnly={!stateUpdate}
           onChange={({ target: { value } }) => setCity(value)}

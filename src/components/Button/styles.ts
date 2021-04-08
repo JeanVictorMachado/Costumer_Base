@@ -6,6 +6,7 @@ export const Wrapper = styled.button`
     height: 35px;
 
     font-size: 16px;
+    font-weight: 600;
 
     border-radius: 3px;
     box-shadow: 0 0 5px ${theme.colors.tertiary};
@@ -16,5 +17,11 @@ export const Wrapper = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
   `}
 `;

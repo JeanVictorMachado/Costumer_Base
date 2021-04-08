@@ -30,8 +30,8 @@ const Input: React.FC<InputProps> = ({
   onChange,
 }) => {
   return (
-    <S.Wrapper width={width}>
-      <S.WrapperImage id={id}>{Icon && <Icon size={20} />}</S.WrapperImage>
+    <S.Wrapper id={id} width={width}>
+      <S.WrapperImage>{Icon && <Icon size={20} />}</S.WrapperImage>
       <S.Input
         ref={register}
         type={type}
